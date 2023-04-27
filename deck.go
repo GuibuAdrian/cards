@@ -6,8 +6,16 @@ import "fmt"
 // which is a slice of strings
 type deck []string
 
+func newDeck() deck {
+	cards := deck{"Ace of Spades", "Two of Spades", newCard()}
+	return cards
+}
 func (d deck) print() {
 	for i, card := range d {
 		fmt.Println(i, card)
 	}
+}
+
+func newCard() string {
+	return "Five of Diamonds"
 }
