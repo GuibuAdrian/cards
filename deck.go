@@ -25,6 +25,11 @@ func (d deck) print() {
 	}
 }
 
+func deal(d deck, handSize int) (deck, deck) {
+	// deck[startIndexIncluding : upToNotIncluding]
+	return d[:handSize], d[handSize:]
+}
+
 func newCard() string {
 	return "Diamonds"
 }
