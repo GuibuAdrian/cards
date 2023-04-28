@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"strings"
 )
 
@@ -36,6 +37,10 @@ func deal(d deck, handSize int) (deck, deck) {
 func (d deck) toString() string {
 	// strings.Join: takes a slice of string and reduces it to a single string using sep as separator
 	return strings.Join([]string(d), ",")
+}
+
+func (d deck) saveToFile(fileName string) error {
+	return os.WriteFile(fileName, []byte(d.toString()), 0666)
 }
 
 func newCard() string {

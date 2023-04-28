@@ -12,4 +12,9 @@ func main() {
 	remainingCards.print()
 
 	fmt.Println(cards.toString())
+
+	err := cards.saveToFile("my_cards")
+	if err != nil {
+		return
+	}
 }
