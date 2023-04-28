@@ -7,7 +7,16 @@ import "fmt"
 type deck []string
 
 func newDeck() deck {
-	cards := deck{"Ace of Spades", "Two of Spades", newCard()}
+	cards := deck{}
+	cardSuits := []string{"Spades", newCard(), "Hearts", "Clubs"}
+	cardValues := []string{"Ace", "Two", "Three", "Four"}
+
+	for _, suit := range cardSuits {
+		for _, value := range cardValues {
+			cards = append(cards, value+" of "+suit)
+		}
+	}
+
 	return cards
 }
 func (d deck) print() {
@@ -17,5 +26,5 @@ func (d deck) print() {
 }
 
 func newCard() string {
-	return "Five of Diamonds"
+	return "Diamonds"
 }
