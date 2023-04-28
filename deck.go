@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"os"
 	"strings"
+	"time"
 )
 
 // Create a new type of 'deck'
@@ -57,6 +59,18 @@ func newDeckFromFile(fileName string) deck {
 	s := strings.Split(string(bs), ",")
 	return deck(s)
 }
+
+func (d deck) shuffle() {
+	source := rand.NewSource(time.Now().UnixNano()) // We use the current time as a seed
+	r := rand.New(source)                           // We create and use a custom rand struct to generate an even more random number
+
+	for i := range d {
+		newPosition := r.Intn(len(d) - 1)
+
+		d[i], d[newPosition] = d[newPosition], d[i]
+	}
+}
+
 func newCard() string {
 	return "Diamonds"
 }
