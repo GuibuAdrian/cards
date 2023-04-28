@@ -13,8 +13,9 @@ func main() {
 
 	fmt.Println(cards.toString())
 
-	err := cards.saveToFile("my_cards")
-	if err != nil {
-		return
-	}
+	cards.saveToFile("my_cards")
+
+	cards = newDeckFromFile("my_cards")
+
+	cards.print()
 }
